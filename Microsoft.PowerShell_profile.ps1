@@ -20,44 +20,44 @@ Remove-Item Alias:ni -Force -ErrorAction Ignore
 
 
 #------------------------------- Import Modules BEGIN -------------------------------
-# npmçš„è‡ªåŠ¨è¡¥å…¨
+# npmµÄ×Ô¶¯²¹È«
 Import-Module npm-completion
 
-# å¼•å…¥ posh-git gitçš„è‡ªåŠ¨è¡¥å…¨
+# ÒıÈë posh-git gitµÄ×Ô¶¯²¹È«
 Import-Module posh-git
 
-# å¼•å…¥ ps-read-line
+# ÒıÈë ps-read-line
 Import-Module PSReadLine
 
-# å¼•å…¥ PowerShellAI
+# ÒıÈë PowerShellAI
 Import-Module PowerShellAI
 
-# å¼•å…¥ PSCompletions
+# ÒıÈë PSCompletions
 Import-Module PSCompletions
 #------------------------------- Import Modules END -------------------------------
 
 
 
 #-------------------------------  Set Hot-keys BEGIN  -------------------------------
-# è®¾ç½®é¢„æµ‹æ–‡æœ¬æ¥æºä¸ºå†å²è®°å½•
+# ÉèÖÃÔ¤²âÎÄ±¾À´Ô´ÎªÀúÊ·¼ÇÂ¼
 Set-PSReadLineOption -PredictionSource History
 
-# æ¯æ¬¡å›æº¯è¾“å…¥å†å²ï¼Œå…‰æ ‡å®šä½äºè¾“å…¥å†…å®¹æœ«å°¾
+# Ã¿´Î»ØËİÊäÈëÀúÊ·£¬¹â±ê¶¨Î»ÓÚÊäÈëÄÚÈİÄ©Î²
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
-# è®¾ç½® Tab ä¸ºèœå•è¡¥å…¨å’Œ Intellisense
+# ÉèÖÃ Tab Îª²Ëµ¥²¹È«ºÍ Intellisense
 Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
 
-# è®¾ç½® Ctrl+d ä¸ºé€€å‡º PowerShell
+# ÉèÖÃ Ctrl+d ÎªÍË³ö PowerShell
 Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function ViExit
 
-# è®¾ç½® Ctrl+z ä¸ºæ’¤é”€
+# ÉèÖÃ Ctrl+z Îª³·Ïú
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
-# è®¾ç½®å‘ä¸Šé”®ä¸ºåå‘æœç´¢å†å²è®°å½•
+# ÉèÖÃÏòÉÏ¼üÎªºóÏòËÑË÷ÀúÊ·¼ÇÂ¼
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 
-# è®¾ç½®å‘ä¸‹é”®ä¸ºå‰å‘æœç´¢å†å²çºªå½•
+# ÉèÖÃÏòÏÂ¼üÎªÇ°ÏòËÑË÷ÀúÊ·¼ÍÂ¼
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 #-------------------------------  Set Hot-keys END    -------------------------------
 
@@ -109,6 +109,14 @@ function gpu {
   param([string] $branch)
   git push -u origin $branch
 }
+
+# -------------------------------- #
+# lias CLI Name
+# -------------------------------- #
+
+set-alias -name pn -value pnpm
+
+# -------------------------------- #
 
 # -------------------------------- #
 # Directories
