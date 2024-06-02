@@ -20,44 +20,44 @@ Remove-Item Alias:ni -Force -ErrorAction Ignore
 
 
 #------------------------------- Import Modules BEGIN -------------------------------
-# npmµÄ×Ô¶¯²¹È«
+# npmçš„è‡ªåŠ¨è¡¥å…¨
 Import-Module npm-completion
 
-# ÒıÈë posh-git gitµÄ×Ô¶¯²¹È«
+# å¼•å…¥ posh-git gitçš„è‡ªåŠ¨è¡¥å…¨
 Import-Module posh-git
 
-# ÒıÈë ps-read-line
+# å¼•å…¥ ps-read-line
 Import-Module PSReadLine
 
-# ÒıÈë PowerShellAI
+# å¼•å…¥ PowerShellAI
 Import-Module PowerShellAI
 
-# ÒıÈë PSCompletions
+# å¼•å…¥ PSCompletions
 Import-Module PSCompletions
 #------------------------------- Import Modules END -------------------------------
 
 
 
 #-------------------------------  Set Hot-keys BEGIN  -------------------------------
-# ÉèÖÃÔ¤²âÎÄ±¾À´Ô´ÎªÀúÊ·¼ÇÂ¼
+# è®¾ç½®é¢„æµ‹æ–‡æœ¬æ¥æºä¸ºå†å²è®°å½•
 Set-PSReadLineOption -PredictionSource History
 
-# Ã¿´Î»ØËİÊäÈëÀúÊ·£¬¹â±ê¶¨Î»ÓÚÊäÈëÄÚÈİÄ©Î²
+# æ¯æ¬¡å›æº¯è¾“å…¥å†å²ï¼Œå…‰æ ‡å®šä½äºè¾“å…¥å†…å®¹æœ«å°¾
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
-# ÉèÖÃ Tab Îª²Ëµ¥²¹È«ºÍ Intellisense
+# è®¾ç½® Tab ä¸ºèœå•è¡¥å…¨å’Œ Intellisense
 Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
 
-# ÉèÖÃ Ctrl+d ÎªÍË³ö PowerShell
+# è®¾ç½® Ctrl+d ä¸ºé€€å‡º PowerShell
 Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function ViExit
 
-# ÉèÖÃ Ctrl+z Îª³·Ïú
+# è®¾ç½® Ctrl+z ä¸ºæ’¤é”€
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
-# ÉèÖÃÏòÉÏ¼üÎªºóÏòËÑË÷ÀúÊ·¼ÇÂ¼
+# è®¾ç½®å‘ä¸Šé”®ä¸ºåå‘æœç´¢å†å²è®°å½•
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 
-# ÉèÖÃÏòÏÂ¼üÎªÇ°ÏòËÑË÷ÀúÊ·¼ÍÂ¼
+# è®¾ç½®å‘ä¸‹é”®ä¸ºå‰å‘æœç´¢å†å²çºªå½•
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 #-------------------------------  Set Hot-keys END    -------------------------------
 
@@ -85,16 +85,27 @@ function re { nr releaseh }
 # Git
 # -------------------------------- #
 function gs { git status }
+
 function gl { git log }
 function glo { git log --oneline --graph }
+
+function gcl {
+  param([string] $repo)
+  git clone $repo
+}
+
 function grao {
   param([string] $args)
   git remote add origin $args
 }
+
 function ga { git add . }
+function gA { git add -A }
+
 function gb { git branch }
 function gbd { git branch -d }
 function gba { git branch -a }
+
 function gcm {
   param([string] $message)
   git commit -m $message
@@ -103,11 +114,28 @@ function gca {
   param([string] $message)
   git commit -a $message
 }
+
 function gp { git push }
-function gpf { git push -f }
+function gpf { git push --force }
+function gpft { git push --follow-tags }
 function gpu {
   param([string] $branch)
   git push -u origin $branch
+}
+
+function gpl { git pull --rebase }
+
+
+function gfrb {
+  param([string] $branch)
+  git fetch origin && git rebase origin/$branch
+}
+
+function gx {
+  git clean -df
+}
+function gxn {
+  git clean -dn
 }
 
 # -------------------------------- #
